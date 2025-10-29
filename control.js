@@ -1,11 +1,11 @@
 // ============================================
 // CONFIGURACIÓN
 // ============================================
-const API_URL = 'http://52.54.157.92:5500/api';
+const API_URL = 'https://52.54.157.92/api';
 const DISPOSITIVO_ID = 1;
 
 // Conexión WebSocket para recibir eventos push
-const socket = io('http://52.54.157.92:5500');
+const socket = io('https://52.54.157.92');
 
 // ============================================
 // ESTADO DE LA APLICACIÓN
