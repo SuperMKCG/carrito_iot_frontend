@@ -1,0 +1,423 @@
+/* ============================================
+   ESTILOS GENERALES - Panel IoT Carrito
+   ============================================ */
+
+:root {
+  --neon-blue: #00f7ff;
+  --neon-purple: #b300ff;
+  --dark-bg: #0a0e27;
+  --card-bg: #1a1f3a;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--dark-bg);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Fondo animado para index */
+.index-bg {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Efecto de texto brillante */
+.text-glow {
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+}
+
+/* Botones neón */
+.btn-neon {
+  background: transparent;
+  border: 2px solid var(--neon-blue);
+  color: var(--neon-blue);
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.btn-neon:hover {
+  background: var(--neon-blue);
+  color: #000;
+  box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+  transform: scale(1.05);
+}
+
+/* Cards para aplicaciones */
+.app-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 247, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Header de aplicaciones */
+.app-header {
+  background: linear-gradient(135deg, #1a1f3a 0%, #2a2f4a 100%);
+  border-bottom: 2px solid var(--neon-blue);
+  box-shadow: 0 2px 10px rgba(0, 247, 255, 0.3);
+}
+
+/* Botones de control del carrito */
+.control-btn {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-width: 180px;
+  text-align: center;
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+/* Colores según la imagen */
+.btn-forward { 
+  background: #7c3aed; 
+  border-color: #6d28d9; 
+  color: white;
+}
+.btn-forward:hover { 
+  background: #6d28d9; 
+  box-shadow: 0 0 15px #7c3aed;
+}
+
+.btn-backward { 
+  background: #fbbf24; 
+  border-color: #f59e0b; 
+  color: #1a1f3a;
+}
+.btn-backward:hover { 
+  background: #f59e0b; 
+  box-shadow: 0 0 15px #fbbf24;
+}
+
+.btn-turn { 
+  background: #3b82f6; 
+  border-color: #2563eb; 
+  color: white;
+}
+.btn-turn:hover { 
+  background: #2563eb; 
+  box-shadow: 0 0 15px #3b82f6;
+}
+
+.btn-stop { 
+  background: #ef4444; 
+  border-color: #dc2626; 
+  color: white;
+}
+.btn-stop:hover { 
+  background: #dc2626; 
+  box-shadow: 0 0 15px #ef4444;
+}
+
+.btn-rotate-90 { 
+  background: #10b981; 
+  border-color: #059669; 
+  color: white;
+}
+.btn-rotate-90:hover { 
+  background: #059669; 
+  box-shadow: 0 0 15px #10b981;
+}
+
+.btn-rotate-360 { 
+  background: #f97316; 
+  border-color: #ea580c; 
+  color: white;
+}
+.btn-rotate-360:hover { 
+  background: #ea580c; 
+  box-shadow: 0 0 15px #f97316;
+}
+
+/* Panel de estado */
+.status-panel {
+  background: rgba(26, 31, 58, 0.8);
+  border: 2px solid var(--neon-purple);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(179, 0, 255, 0.3);
+}
+
+.status-label {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.status-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--neon-blue);
+}
+
+/* Tablas de monitoreo */
+/* Tablas de monitoreo - NEGRO OSCURO */
+.table-monitor {
+  background: var(--card-bg);
+  color: #fff;
+}
+
+.table-monitor thead {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);  /* ✅ Negro oscuro */
+  border-bottom: 2px solid #30363d;  /* ✅ Gris oscuro */
+}
+
+.table-monitor th {
+  color: #c9d1d9;  /* ✅ Gris claro */
+  font-weight: bold;
+  border-color: rgba(48, 54, 61, 0.5);  /* ✅ Gris oscuro */
+}
+
+.table-monitor td {
+  border-color: rgba(255, 255, 255, 0.1);
+  vertical-align: middle;
+}
+
+.table-monitor tbody tr:hover {
+  background: rgba(48, 54, 61, 0.3);  /* ✅ Hover gris oscuro */
+}
+
+/* Badge de estado */
+.badge-recording {
+  background: #ef4444;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.control-btn.active {
+  transform: scale(0.95);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  filter: brightness(1.3);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Spinner de carga */
+.spinner-glow {
+  border: 3px solid rgba(0, 247, 255, 0.3);
+  border-top-color: var(--neon-blue);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   ESTILOS COMPACTOS PARA LAYOUT OPTIMIZADO
+   ============================================ */
+
+/* Versión compacta de botones de control */
+.control-btn-compact {
+  font-size: 0.8rem !important;
+  padding: 0.6rem 1rem !important;
+  min-width: 150px !important;
+}
+
+/* Panel de estado compacto */
+.status-panel-compact {
+  padding: 1rem !important;
+}
+
+.status-panel-compact .status-label {
+  font-size: 0.75rem;
+}
+
+.status-panel-compact .status-value {
+  font-size: 0.95rem;
+}
+
+/* Secciones compactas (Grabación, Repetir, Simular) */
+.compact-section {
+  font-size: 0.9rem;
+}
+
+.compact-section h5 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem !important;
+}
+
+.compact-section .form-control,
+.compact-section .form-select {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.75rem;
+  background: rgba(26, 31, 58, 0.8);
+  border: 1px solid rgba(0, 247, 255, 0.3);
+  color: #fff;
+}
+
+.compact-section .form-control:focus,
+.compact-section .form-select:focus {
+  background: rgba(26, 31, 58, 0.9);
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+  color: #fff;
+}
+
+.compact-section .form-select option {
+  background: var(--card-bg);
+  color: #fff;
+}
+
+.compact-section .btn {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.compact-section .badge {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.6rem !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .control-btn {
+    min-width: 140px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  
+  .control-btn-compact {
+    min-width: 120px !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .status-value {
+    font-size: 16px;
+  }
+  
+  .status-panel-compact .status-value {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================
+   OVERLAY DE GRABACIÓN FLOTANTE
+   ============================================ */
+
+.recording-overlay {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 9999;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.recording-panel {
+  background: linear-gradient(135deg, #1a1f3a 0%, #2a2f4a 100%);
+  border: 2px solid #ef4444;
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 280px;
+  max-width: 350px;
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.recording-panel h6 {
+  color: #ef4444;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recording-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.recording-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.recording-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.recording-list::-webkit-scrollbar-thumb {
+  background: rgba(239, 68, 68, 0.5);
+  border-radius: 3px;
+}
+
+.recording-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 68, 68, 0.7);
+}
+
+.movimiento-item {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid #ef4444;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movimiento-item .paso-numero {
+  display: inline-block;
+  background: #ef4444;
+  color: white;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.movimiento-item .operacion-nombre {
+  color: #fff;
+  font-weight: 500;
+}
+
+.movimiento-item .tiempo-ms {
+  color: #888;
+  font-size: 0.75rem;
+  float: right;
+}
