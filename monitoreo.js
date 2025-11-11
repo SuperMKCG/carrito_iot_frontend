@@ -1,7 +1,7 @@
 // ============================================
 // CONFIGURACIÓN
 // ============================================
-const API_URL = 'https://52.54.157.92/api'; 
+const API_URL = 'http://52.54.157.92/api'; 
 const DISPOSITIVO_ID = 1;
 const REFRESH_INTERVAL = 1000; // 1 segundo
 
