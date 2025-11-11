@@ -1,5 +1,5 @@
-const API_URL = 'http://localhost:5500/api';
-const WS_URL = 'ws://localhost:5501/ws';
+const API_URL = 'http://52.54.157.92:5500/api';
+const WS_URL = 'ws://52.54.157.92:5501/ws';
 const DISPOSITIVO_ID = 1;
 
 let websocket = null;
