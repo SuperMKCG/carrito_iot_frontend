@@ -1,5 +1,5 @@
-const API_URL = 'https://silencesuzuka.duckdns.org/api';
-const WS_URL  = 'wss://silencesuzuka.duckdns.org/ws';
+ const API_URL = 'https://silencesuzuka.duckdns.org/api';
+ const WS_URL  = 'wss://silencesuzuka.duckdns.org/ws';
 const DISPOSITIVO_ID = 1;
 
 let websocket = null;
