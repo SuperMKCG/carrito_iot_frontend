@@ -2,7 +2,7 @@
 // CONFIGURACIÓN
 // ============================================
 const API_URL = (window.CONFIG && window.CONFIG.API) || 'https://52.54.157.92/api';
-const WS_URL  = (window.CONFIG && window.CONFIG.WS)  || 'ws://54.205.178.208:5001/ws';
+const WS_URL  = (window.CONFIG && window.CONFIG.WS)  || 'ws://54.54.157.92:5001/ws';
 const DISPOSITIVO_ID = 1;
 
 // ============================================
