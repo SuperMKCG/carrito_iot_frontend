@@ -206,7 +206,8 @@ async function enviarMovimiento(idOperacion) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id_dispositivo: DISPOSITIVO_ID,
-        id_operacion: idOperacion
+        id_operacion: idOperacion,
+        duracion_ms: duracion
       })
     });
 
