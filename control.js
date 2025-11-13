@@ -257,7 +257,7 @@ document.querySelectorAll('.control-btn').forEach(btn => {
     isPressed = true;
     const operacion = parseInt(btn.dataset.op, 10);
     modoManual = true;
-    enviarMovimiento(operacion);
+    enviarMovimiento(operacion, 0);
     btn.style.opacity = '0.7';
     btn.style.transform = 'scale(0.95)';
   });
@@ -265,6 +265,7 @@ document.querySelectorAll('.control-btn').forEach(btn => {
   const resetButton = () => {
     if (!isPressed) return;
     isPressed = false;
+    enviarMovimiento(3, 0);
     statusMovimiento.textContent = 'Detenido (esperando comando)';
     btn.style.opacity = '1';
     btn.style.transform = 'scale(1)';
