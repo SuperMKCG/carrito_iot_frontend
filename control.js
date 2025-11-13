@@ -206,8 +206,7 @@ async function enviarMovimiento(idOperacion) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id_dispositivo: DISPOSITIVO_ID,
-        id_operacion: idOperacion,
-        duracion_ms: duracion
+        id_operacion: idOperacion
       })
     });
 
@@ -257,7 +256,7 @@ document.querySelectorAll('.control-btn').forEach(btn => {
     isPressed = true;
     const operacion = parseInt(btn.dataset.op, 10);
     modoManual = true;
-    enviarMovimiento(operacion, 0);
+    enviarMovimiento(operacion);
     btn.style.opacity = '0.7';
     btn.style.transform = 'scale(0.95)';
   });
