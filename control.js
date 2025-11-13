@@ -264,7 +264,7 @@ document.querySelectorAll('.control-btn').forEach(btn => {
   const resetButton = () => {
     if (!isPressed) return;
     isPressed = false;
-    enviarMovimiento(3, 0);
+    enviarMovimiento(3);
     statusMovimiento.textContent = 'Detenido (esperando comando)';
     btn.style.opacity = '1';
     btn.style.transform = 'scale(1)';
