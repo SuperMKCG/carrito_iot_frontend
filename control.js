@@ -90,25 +90,40 @@ function connectWebSocket() {
     return;
   }
 
-  websocket = new WebSocket(WS_URL);
+  try {
+    websocket = new WebSocket(WS_URL);
 
-  websocket.addEventListener('open', () => {
-    clearTimeout(reconnectTimer);
-    websocket.send(JSON.stringify({
-      type: 'identify',
-      role: 'frontend',
-      dispositivo: DISPOSITIVO_ID,
-      channels: ['broadcast']
-    }));
-    statusMovimiento.textContent = 'Conectado al servidor WebSocket';
-  });
+    websocket.addEventListener('open', () => {
+      clearTimeout(reconnectTimer);
+      console.log('WebSocket conectado');
+      
+      // Enviar identificación inmediatamente después de conectar
+      if (websocket.readyState === WebSocket.OPEN) {
+        websocket.send(JSON.stringify({
+          type: 'identify',
+          dispositivo: DISPOSITIVO_ID
+        }));
+        statusMovimiento.textContent = 'Conectado al servidor WebSocket';
+      }
+    });
 
-  websocket.addEventListener('close', () => {
-    statusMovimiento.textContent = 'Reconectando WebSocket...';
+    websocket.addEventListener('error', (error) => {
+      console.error('Error en WebSocket:', error);
+      statusMovimiento.textContent = 'Error de conexión WebSocket';
+    });
+
+    websocket.addEventListener('close', (event) => {
+      console.log('WebSocket cerrado:', event.code, event.reason);
+      statusMovimiento.textContent = 'Reconectando WebSocket...';
+      reconnectTimer = setTimeout(connectWebSocket, 2000);
+    });
+
+    websocket.addEventListener('message', handleWebSocketMessage);
+  } catch (error) {
+    console.error('Error al crear WebSocket:', error);
+    statusMovimiento.textContent = 'Error al conectar WebSocket';
     reconnectTimer = setTimeout(connectWebSocket, 2000);
-  });
-
-  websocket.addEventListener('message', handleWebSocketMessage);
+  }
 }
 
 function handleWebSocketMessage(event) {
