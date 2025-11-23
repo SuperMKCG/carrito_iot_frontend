@@ -144,52 +144,69 @@ function connectWebSocket() {
     return;
   }
 
-  websocket = new WebSocket(WS_URL);
+  try {
+    websocket = new WebSocket(WS_URL);
 
-  websocket.addEventListener('open', async () => {
-    clearTimeout(reconnectTimer);
-    websocket.send(JSON.stringify({
-      type: 'identify',
-      role: 'monitor',
-      dispositivo: DISPOSITIVO_ID,
-      channels: ['broadcast']
-    }));
-    await actualizarTodo();
-  });
+    websocket.addEventListener('open', async () => {
+      clearTimeout(reconnectTimer);
+      console.log('WebSocket conectado');
+      
+      // Enviar identificación inmediatamente después de conectar
+      if (websocket.readyState === WebSocket.OPEN) {
+        websocket.send(JSON.stringify({
+          type: 'identify',
+          dispositivo: DISPOSITIVO_ID
+        }));
+        await actualizarTodo();
+      }
+    });
 
-  websocket.addEventListener('close', () => {
+    websocket.addEventListener('error', (error) => {
+      console.error('Error en WebSocket:', error);
+    });
+
+    websocket.addEventListener('close', (event) => {
+      console.log('WebSocket cerrado:', event.code, event.reason);
+      reconnectTimer = setTimeout(connectWebSocket, 2000);
+    });
+
+    websocket.addEventListener('message', async (event) => {
+      try {
+        const message = JSON.parse(event.data);
+        
+        // Manejar mensaje "ready" del servidor
+        if (message.type === 'ready') {
+          console.log('Servidor WebSocket listo:', message.msg);
+          return;
+        }
+        
+        if (message.type !== 'event') {
+          return;
+        }
+
+        switch (message.event) {
+          case 'movimiento_manual':
+          case 'carrito_movimiento_ok':
+            await Promise.all([actualizarMovimientos(), actualizarUltimoMovimiento()]);
+            break;
+          case 'obstaculo_detectado':
+          case 'obstaculo_real':
+            await Promise.all([actualizarObstaculos(), actualizarUltimoObstaculo()]);
+            break;
+          case 'movimiento_secuencia':
+            await actualizarSecuencias();
+            break;
+          default:
+            break;
+        }
+      } catch (error) {
+        console.error('Error al procesar mensaje WebSocket:', error);
+      }
+    });
+  } catch (error) {
+    console.error('Error al crear WebSocket:', error);
     reconnectTimer = setTimeout(connectWebSocket, 2000);
-  });
-
-  websocket.addEventListener('message', async (event) => {
-    try {
-      const message = JSON.parse(event.data);
-      if (message.type !== 'event') {
-        return;
-      }
-
-      switch (message.event) {
-        case 'movimiento_manual':
-        case 'carrito_movimiento_ok':
-          await Promise.all([actualizarMovimientos(), actualizarUltimoMovimiento()]);
-          break;
-
-        case 'obstaculo_detectado':
-        case 'obstaculo_real':
-          await Promise.all([actualizarObstaculos(), actualizarUltimoObstaculo()]);
-          break;
-
-        case 'movimiento_secuencia':
-          await actualizarSecuencias();
-          break;
-
-        default:
-          break;
-      }
-    } catch (error) {
-      console.error('Error al procesar mensaje WebSocket:', error);
-    }
-  });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
