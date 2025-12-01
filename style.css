@@ -1,7 +1,6 @@
 /* ============================================
    ESTILOS GENERALES - Panel IoT Carrito
    ============================================ */
-
 :root {
   --neon-blue: #00f7ff;
   --neon-purple: #b300ff;
@@ -56,6 +55,9 @@ body {
   border-radius: 15px;
   border: 1px solid rgba(0, 247, 255, 0.3);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 /* Header de aplicaciones */
@@ -76,10 +78,14 @@ body {
   cursor: pointer;
   min-width: 180px;
   text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .control-btn:active {
   transform: scale(0.95);
+  opacity: 0.8;
 }
 
 /* Colores según la imagen */
@@ -88,6 +94,7 @@ body {
   border-color: #6d28d9; 
   color: white;
 }
+
 .btn-forward:hover { 
   background: #6d28d9; 
   box-shadow: 0 0 15px #7c3aed;
@@ -98,6 +105,7 @@ body {
   border-color: #f59e0b; 
   color: #1a1f3a;
 }
+
 .btn-backward:hover { 
   background: #f59e0b; 
   box-shadow: 0 0 15px #fbbf24;
@@ -108,6 +116,7 @@ body {
   border-color: #2563eb; 
   color: white;
 }
+
 .btn-turn:hover { 
   background: #2563eb; 
   box-shadow: 0 0 15px #3b82f6;
@@ -118,6 +127,7 @@ body {
   border-color: #dc2626; 
   color: white;
 }
+
 .btn-stop:hover { 
   background: #dc2626; 
   box-shadow: 0 0 15px #ef4444;
@@ -128,6 +138,7 @@ body {
   border-color: #059669; 
   color: white;
 }
+
 .btn-rotate-90:hover { 
   background: #059669; 
   box-shadow: 0 0 15px #10b981;
@@ -138,6 +149,7 @@ body {
   border-color: #ea580c; 
   color: white;
 }
+
 .btn-rotate-360:hover { 
   background: #ea580c; 
   box-shadow: 0 0 15px #f97316;
@@ -166,7 +178,6 @@ body {
   color: var(--neon-blue);
 }
 
-/* Tablas de monitoreo */
 /* Tablas de monitoreo - NEGRO OSCURO */
 .table-monitor {
   background: var(--card-bg);
@@ -174,14 +185,14 @@ body {
 }
 
 .table-monitor thead {
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);  /* ✅ Negro oscuro */
-  border-bottom: 2px solid #30363d;  /* ✅ Gris oscuro */
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  border-bottom: 2px solid #30363d;
 }
 
 .table-monitor th {
-  color: #c9d1d9;  /* ✅ Gris claro */
+  color: #c9d1d9;
   font-weight: bold;
-  border-color: rgba(48, 54, 61, 0.5);  /* ✅ Gris oscuro */
+  border-color: rgba(48, 54, 61, 0.5);
 }
 
 .table-monitor td {
@@ -190,7 +201,7 @@ body {
 }
 
 .table-monitor tbody tr:hover {
-  background: rgba(48, 54, 61, 0.3);  /* ✅ Hover gris oscuro */
+  background: rgba(48, 54, 61, 0.3);
 }
 
 /* Badge de estado */
@@ -313,7 +324,6 @@ body {
 /* ============================================
    OVERLAY DE GRABACIÓN FLOTANTE
    ============================================ */
-
 .recording-overlay {
   position: fixed;
   top: 80px;
@@ -420,4 +430,229 @@ body {
   color: #888;
   font-size: 0.75rem;
   float: right;
+}
+
+/* ============================================
+   AJUSTES ESPECÍFICOS PARA PANEL DE MOVIMIENTO
+   ============================================ */
+
+/* Contenedor de controles de movimiento */
+.app-card .d-flex.flex-column.align-items-center {
+  width: 100%;
+}
+
+/* Grupo de botones - mantener estructura de 3 filas */
+.app-card .d-flex.flex-column.align-items-center > .d-flex {
+  width: 100%;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+/* ============================================
+   RESPONSIVE EXTRA (MÓVIL Y TABLET)
+   ============================================ */
+
+/* Tablet ≤ 992px */
+@media (max-width: 992px) {
+  .speed-group .btn {
+    margin: 4px 6px;
+    padding: 8px 14px;
+    border-radius: 10px;
+  }
+  
+  .app-card,
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .table-monitor td,
+  .table-monitor th {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+  
+  .recording-overlay {
+    top: 72px;
+    right: 16px;
+  }
+}
+
+/* Móvil ≤ 576px (teléfonos) */
+@media (max-width: 576px) {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+  
+  .control-btn {
+    min-width: 120px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  
+  /* Panel de controles de movimiento - mantener estructura */
+  .app-card h5 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .app-card .d-flex.flex-column.align-items-center {
+    gap: 0.75rem;
+  }
+  
+  .app-card .d-flex.flex-column.align-items-center > .d-flex {
+    gap: 0.4rem;
+    padding: 0 0.5rem;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Botones de control en móvil - mantener tamaño uniforme */
+  .control-btn-compact {
+    min-width: 0 !important;
+    flex: 1 1 auto;
+    padding: 0.5rem 0.4rem !important;
+    font-size: 0.7rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Fila superior (3 botones) */
+  .app-card .d-flex.flex-column.align-items-center > .d-flex:first-child .control-btn-compact {
+    flex: 1 1 calc(33.33% - 0.3rem);
+    max-width: calc(33.33% - 0.3rem);
+  }
+  
+  /* Fila media (5 botones) */
+  .app-card .d-flex.flex-column.align-items-center > .d-flex:nth-child(2) .control-btn-compact {
+    flex: 1 1 calc(20% - 0.25rem);
+    max-width: calc(20% - 0.25rem);
+    font-size: 0.65rem !important;
+    padding: 0.45rem 0.3rem !important;
+  }
+  
+  /* Botón "Detener" en el centro - un poco más ancho */
+  .app-card .d-flex.flex-column.align-items-center > .d-flex:nth-child(2) .btn-stop {
+    flex: 1.2 1 calc(20% - 0.25rem);
+    max-width: calc(24% - 0.25rem);
+  }
+  
+  /* Fila inferior (3 botones) */
+  .app-card .d-flex.flex-column.align-items-center > .d-flex:last-child .control-btn-compact {
+    flex: 1 1 calc(33.33% - 0.3rem);
+    max-width: calc(33.33% - 0.3rem);
+  }
+  
+  /* Botonera de velocidad: ocupa todo el ancho y salta en filas */
+  .speed-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .speed-group .btn {
+    flex: 1 1 calc(50% - 12px);
+    margin: 4px 6px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .status-panel {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  
+  .status-label {
+    font-size: 12px;
+  }
+  
+  .status-value {
+    font-size: 15px;
+  }
+  
+  .table-monitor {
+    font-size: 12px;
+  }
+  
+  .table-monitor thead th,
+  .table-monitor td {
+    padding: 0.5rem 0.6rem;
+  }
+  
+  #feed {
+    max-height: 50vh !important;
+  }
+  
+  .recording-overlay {
+    top: 64px;
+    right: 12px;
+  }
+  
+  .recording-panel {
+    min-width: 240px;
+    max-width: 320px;
+    padding: 0.8rem;
+  }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+  .control-btn-compact {
+    min-width: 130px !important;
+    padding: 0.55rem 0.8rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .app-card .d-flex.flex-column.align-items-center > .d-flex {
+    gap: 0.6rem;
+  }
+}
+
+/* === Velocidad (card compacta y vistosa) === */
+.speed-card {
+  max-width: 460px;
+  margin: 0 auto;
+  border: 1px solid rgba(0,247,255,0.35);
+  box-shadow: 0 0 15px rgba(0,247,255,0.12);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #151a33 0%, #1a1f3a 100%);
+}
+
+/* Botones "chip" neon */
+.speed-chip {
+  padding: 6px 16px;
+  border-radius: 999px;
+  letter-spacing: .3px;
+  font-weight: 600;
+  min-width: 88px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+/* Estado seleccionado (agregado por JS: .active) */
+.speed-chip.active,
+.speed-chip:focus {
+  color: #000 !important;
+  background: var(--neon-blue) !important;
+  border-color: var(--neon-blue) !important;
+  box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+}
+
+/* Responsivo extra para el bloque de velocidad */
+@media (max-width: 576px) {
+  .speed-card { 
+    max-width: 100%; 
+  }
+  
+  .speed-group { 
+    gap: 6px; 
+  }
+  
+  .speed-chip {
+    flex: 1 1 calc(33.33% - 12px);
+    padding: 8px 10px;
+    min-width: 0;
+    text-align: center;
+  }
 }
