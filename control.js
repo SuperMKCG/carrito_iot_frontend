@@ -117,6 +117,10 @@ function connectWebSocket(){
         reconnectTimer = setTimeout(connectWebSocket, 2000);
     });
     
+    // Variable para rastrear si hay evasión activa
+    let evasionActiva = false;
+    let timeoutObstaculo = null;
+    
     websocket.addEventListener('message', evt => {
         try{
             const msg = JSON.parse(evt.data || '{}');
@@ -127,20 +131,57 @@ function connectWebSocket(){
             
             if(ev === 'secuencia_iniciada'){
                 setEstadoSecuencia(`Secuencia iniciada (ejec #${d.id_ejecucion ?? '-'})`);
+                // Limpiar obstáculo al iniciar secuencia
+                limpiarMensajeObstaculo();
             } else if(ev === 'comando_carrito'){
                 const opId = d.operacion ?? d.operacion_id;
                 const opNombre = d.operacion_nombre || operaciones[opId] || `Operación ${opId}`;
                 setEstadoMovimiento(`Paso: ${opNombre} | Vel: ${d.velocidad ?? '-'}`);
+                
+                // Limpiar mensaje de obstáculo cuando el carrito recibe un nuevo comando
+                // (significa que ya continuó después de la evasión)
+                if(evasionActiva){
+                    limpiarMensajeObstaculo();
+                    evasionActiva = false;
+                }
             } else if(ev === 'secuencia_finalizada'){
                 setEstadoSecuencia(`Secuencia finalizada (ejec #${d.id_ejecucion ?? '-'})`);
                 ejecutandoSecuencia = false;
+                // Limpiar obstáculo al finalizar secuencia
+                limpiarMensajeObstaculo();
             } else if(ev === 'obstaculo_detectado'){
                 const obsId = d.obstaculo ?? d.id_obstaculo ?? d.obstaculo_id;
                 const obsNombre = d.obstaculo_nombre || obstaculos[obsId] || `Obstáculo ${obsId}`;
                 setEstadoObstaculo(`⚠️ Obstáculo: ${obsNombre}`);
+                evasionActiva = true;
+                
+                // Limpiar timeout anterior si existe
+                if(timeoutObstaculo){
+                    clearTimeout(timeoutObstaculo);
+                }
+                
+                // Limpiar automáticamente después de 1 segundo si no hay más actividad
+                timeoutObstaculo = setTimeout(() => {
+                    if(evasionActiva){
+                        limpiarMensajeObstaculo();
+                        evasionActiva = false;
+                    }
+                }, 1000);
+            } else if(ev === 'movimiento_completado'){
+                // Limpiar obstáculo cuando se completa un movimiento
+                // (el carrito terminó la evasión y continuó)
+                if(evasionActiva){
+                    limpiarMensajeObstaculo();
+                    evasionActiva = false;
+                }
             }
         }catch(_){}
     });
+}
+
+// ----------------- Función para limpiar mensaje de obstáculo -----------------
+function limpiarMensajeObstaculo(){
+    setEstadoObstaculo('Ninguno');
 }
 
 // ----------------- API Calls (POST) -----------------
