@@ -3,45 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300bcd4'/%3E%3Cstop offset='100%25' stop-color='%2300796b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23g1)' rx='20'/%3E%3Cg fill='%23ffffff'%3E%3C!-- Barras del Gráfico --%3E%3Crect x='25' y='65' width='10' height='20' rx='2' fill='%23ff9800'/%3E%3Crect x='40' y='50' width='10' height='35' rx='2' fill='%23ffffff'/%3E%3Crect x='55' y='35' width='10' height='50' rx='2' fill='%23ff9800'/%3E%3Crect x='70' y='20' width='10' height='65' rx='2' fill='%23ffffff'/%3E%3C/g%3E%3C/svg%3E">  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300bcd4'/%3E%3Cstop offset='100%25' stop-color='%2300796b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23g1)' rx='20'/%3E%3Cg fill='%23ffffff'%3E%3C!-- Barras del Gráfico --%3E%3Crect x='25' y='65' width='10' height='20' rx='2' fill='%23ff9800'/%3E%3Crect x='40' y='50' width='10' height='35' rx='2' fill='%23ffffff'/%3E%3Crect x='55' y='35' width='10' height='50' rx='2' fill='%23ff9800'/%3E%3Crect x='70' y='20' width='10' height='65' rx='2' fill='%23ffffff'/%3E%3C/g%3E%3C/svg%3E">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="app-header py-3 sticky-top">
+  <header class="app-header py-2 sticky-top">
     <div class="container-fluid">
       <div class="d-flex justify-content-between align-items-center">
-        <h2 class="mb-0">📊 Monitoreo del Carrito</h2>
+        <h4 class="mb-0">📊 Monitoreo del Carrito</h4>
         <div class="d-flex gap-3 align-items-center">
-          <span class="badge bg-success px-3 py-2">
-            🔄 Actualización en tiempo real
-          </span>
+          <span class="badge bg-success px-2 py-1">🔄 Actualización en tiempo real</span>
           <a href="control.html" class="btn btn-sm btn-outline-light">🎮 Control</a>
           <a href="index.html" class="btn btn-sm btn-outline-light">🏠 Inicio</a>
         </div>
       </div>
     </div>
   </header>
-  <div class="container-fluid py-4">
-    <div class="row mb-4">
-      <div class="col-12">
-        <div class="app-card p-4">
-          <h4 class="mb-3">🚗 Últimos 10 Movimientos</h4>
-          <div class="table-responsive">
-            <table class="table table-monitor table-hover">
+
+  <div class="container-fluid py-3">
+    <div class="row mb-3">
+      <div class="col-md-4 mb-3">
+        <div class="app-card p-3">
+          <h6 class="mb-2">🚗 Últimos 10 Movimientos</h6>
+          <div class="table-responsive table-monitor-compact">
+            <table class="table table-monitor table-hover table-sm mb-0">
               <thead>
                 <tr>
-                  <th>ID Evento</th>
+                  <th>ID</th>
                   <th>Operación</th>
-                  <th>Nombre Operación</th>
                   <th>Velocidad</th>
-                  <th>Fecha y Hora</th>
+                  <th>Fecha</th>
                 </tr>
               </thead>
               <tbody id="tabla-movimientos">
                 <tr>
-                  <td colspan="5" class="text-center">
-                    <div class="spinner-border spinner-glow" role="status">
-                      <span class="visualmente-hidden">Cargando...</span>
+                  <td colspan="4" class="text-center">
+                    <div class="spinner-border spinner-glow spinner-border-sm" role="status">
+                      <span class="visually-hidden">Cargando...</span>
                     </div>
                   </td>
                 </tr>
@@ -50,27 +49,25 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-12">
-        <div class="app-card p-4">
-          <h4 class="mb-3">⚠️ Últimos 10 Obstáculos Detectados</h4>
-          <div class="table-responsive">
-            <table class="table table-monitor table-hover">
+
+      <div class="col-md-4 mb-3">
+        <div class="app-card p-3">
+          <h6 class="mb-2">⚠️ Últimos 10 Obstáculos</h6>
+          <div class="table-responsive table-monitor-compact">
+            <table class="table table-monitor table-hover table-sm mb-0">
               <thead>
                 <tr>
-                  <th>ID Evento</th>
-                  <th>ID Obstáculo</th>
+                  <th>ID</th>
                   <th>Descripción</th>
                   <th>Modo</th>
-                  <th>Fecha y Hora</th>
+                  <th>Fecha</th>
                 </tr>
               </thead>
               <tbody id="tabla-obstaculos">
                 <tr>
-                  <td colspan="5" class="text-center">
-                    <div class="spinner-border spinner-glow" role="status">
-                      <span class="visualmente-hidden">Cargando...</span>
+                  <td colspan="4" class="text-center">
+                    <div class="spinner-border spinner-glow spinner-border-sm" role="status">
+                      <span class="visually-hidden">Cargando...</span>
                     </div>
                   </td>
                 </tr>
@@ -79,27 +76,25 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-12">
-        <div class="app-card p-4">
-          <h4 class="mb-3">📹 Últimas 20 Secuencias DEMO Creadas</h4>
-          <div class="table-responsive">
-            <table class="table table-monitor table-hover">
+
+      <div class="col-md-4 mb-3">
+        <div class="app-card p-3">
+          <h6 class="mb-2">📹 Últimas 20 Secuencias</h6>
+          <div class="table-responsive table-monitor-compact">
+            <table class="table table-monitor table-hover table-sm mb-0">
               <thead>
                 <tr>
-                  <th>ID Secuencia</th>
-                  <th>ID Dispositivo</th>
+                  <th>ID</th>
                   <th>Nombre</th>
                   <th>Origen</th>
-                  <th>Fecha Creación</th>
+                  <th>Fecha</th>
                 </tr>
               </thead>
               <tbody id="tabla-secuencias">
                 <tr>
-                  <td colspan="5" class="text-center">
-                    <div class="spinner-border spinner-glow" role="status">
-                      <span class="visualmente-hidden">Cargando...</span>
+                  <td colspan="4" class="text-center">
+                    <div class="spinner-border spinner-glow spinner-border-sm" role="status">
+                      <span class="visually-hidden">Cargando...</span>
                     </div>
                   </td>
                 </tr>
@@ -109,33 +104,33 @@
         </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-lg-6 mb-4">
-        <div class="app-card p-4">
-          <h5 class="mb-3">🎯 Último Movimiento Registrado</h5>
-          <div id="ultimo-movimiento" class="p-3 bg-dark rounded">
-            <p class="mb-1"><strong>ID Evento:</strong> <span id="um-id">-</span></p>
-            <p class="mb-1"><strong>ID Operación:</strong> <span id="um-op-id">-</span></p>
-            <p class="mb-1"><strong>Operación:</strong> <span id="um-op-nombre">-</span></p>
-            <p class="mb-1"><strong>Velocidad:</strong> <span id="um-velocidad">-</span></p>
-            <p class="mb-0"><strong>Fecha:</strong> <span id="um-fecha">-</span></p>
+      <div class="col-lg-6 mb-3">
+        <div class="app-card p-3">
+          <h6 class="mb-2">🎯 Último Movimiento</h6>
+          <div id="ultimo-movimiento" class="p-2 bg-dark rounded">
+            <p class="mb-1 small"><strong>ID:</strong> <span id="um-id">-</span></p>
+            <p class="mb-1 small"><strong>Operación:</strong> <span id="um-op-nombre">-</span></p>
+            <p class="mb-1 small"><strong>Velocidad:</strong> <span id="um-velocidad">-</span></p>
+            <p class="mb-0 small"><strong>Fecha:</strong> <span id="um-fecha">-</span></p>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 mb-4">
-        <div class="app-card p-4">
-          <h5 class="mb-3">⚠️ Último Obstáculo Detectado</h5>
-            <div id="ultimo-obstaculo" class="p-3 bg-dark rounded">
-              <p class="mb-1"><strong>ID Evento:</strong> <span id="uo-id">-</span></p>
-              <p class="mb-1"><strong>ID Obstáculo:</strong> <span id="uo-obs-id">-</span></p>
-              <p class="mb-1"><strong>Descripción:</strong> <span id="uo-desc">-</span></p>
-              <p class="mb-1"><strong>Modo:</strong> <span id="uo-modo">-</span></p>
-              <p class="mb-0"><strong>Fecha:</strong> <span id="uo-fecha">-</span></p>
-            </div>
+      <div class="col-lg-6 mb-3">
+        <div class="app-card p-3">
+          <h6 class="mb-2">⚠️ Último Obstáculo</h6>
+          <div id="ultimo-obstaculo" class="p-2 bg-dark rounded">
+            <p class="mb-1 small"><strong>ID:</strong> <span id="uo-id">-</span></p>
+            <p class="mb-1 small"><strong>Descripción:</strong> <span id="uo-desc">-</span></p>
+            <p class="mb-1 small"><strong>Modo:</strong> <span id="uo-modo">-</span></p>
+            <p class="mb-0 small"><strong>Fecha:</strong> <span id="uo-fecha">-</span></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="monitoreo.js"></script>
 </body>
