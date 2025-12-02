@@ -187,17 +187,18 @@ body {
 }
 
 .table-monitor thead {
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  background: #fff !important;
   border-bottom: 2px solid #30363d;
 }
 
 .table-monitor th {
   color: #000 !important;
-  font-weight: bold;
+  font-weight: bold !important;
   border-color: rgba(48, 54, 61, 0.5);
   padding: 0.5rem 0.75rem;
   text-align: left;
   white-space: nowrap;
+  background: #fff !important;
 }
 
 .table-monitor td {
@@ -560,13 +561,18 @@ body {
     table-layout: auto;
   }
 
+  .table-monitor-compact thead {
+    background: #fff !important;
+    border-bottom: 2px solid #30363d;
+  }
+
   .table-monitor-compact thead th {
     padding: 0.3rem 0.35rem;
     font-size: 0.6rem;
-    font-weight: 600;
+    font-weight: bold !important;
     line-height: 1.2;
     color: #000 !important;
-    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    background: #fff !important;
     text-align: left;
     white-space: nowrap;
   }
@@ -720,8 +726,14 @@ body {
     max-height: 180px;
   }
 
+  .table-monitor-compact thead {
+    background: #fff !important;
+  }
+
   .table-monitor-compact thead th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
     padding: 0.25rem 0.3rem;
     font-size: 0.55rem;
   }
@@ -774,8 +786,14 @@ body {
     max-height: 58px;
   }
 
+  .table-monitor-compact thead {
+    background: #fff !important;
+  }
+
   .table-monitor-compact thead th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
   }
 }
 
@@ -793,8 +811,14 @@ body {
     max-height: 260px;
   }
 
+  .table-monitor-compact thead {
+    background: #fff !important;
+  }
+
   .table-monitor-compact thead th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
   }
 }
 
@@ -812,8 +836,14 @@ body {
     max-height: 320px;
   }
 
+  .table-monitor-compact thead {
+    background: #fff !important;
+  }
+
   .table-monitor-compact thead th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
   }
 
   .control-btn-compact {
@@ -831,8 +861,14 @@ body {
     max-height: 280px;
   }
 
+  .table-monitor-compact thead {
+    background: #fff !important;
+  }
+
   .table-monitor-compact thead th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
   }
 }
 
@@ -859,8 +895,14 @@ body {
     padding-bottom: 0.6rem;
   }
 
+  .table-monitor thead {
+    background: #fff !important;
+  }
+
   .table-monitor th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
   }
   
   .recording-overlay {
@@ -965,6 +1007,10 @@ body {
     font-size: 12px;
   }
   
+  .table-monitor thead {
+    background: #fff !important;
+  }
+
   .table-monitor thead th,
   .table-monitor td {
     padding: 0.5rem 0.6rem;
@@ -972,6 +1018,8 @@ body {
 
   .table-monitor th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
   }
   
   #feed {
@@ -1002,8 +1050,14 @@ body {
     gap: 0.6rem;
   }
 
+  .table-monitor thead {
+    background: #fff !important;
+  }
+
   .table-monitor th {
     color: #000 !important;
+    background: #fff !important;
+    font-weight: bold !important;
   }
 }
 
